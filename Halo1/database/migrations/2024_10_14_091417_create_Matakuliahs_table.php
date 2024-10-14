@@ -4,31 +4,27 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Createbarangstable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('matakuliahs', function (Blueprint $table) {
             $table->id();
-            $table->char('kodeMatakuliah',8)->unique();
-            $table->text('namaMatakuliah');
-            $table->integer('sks');
+            $table->char("kodeMatakuliah",length:8);
+            $table->text("namaMatakuliah");
+            $table->integer("sks");
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('matakuliahs');
+        Schema::dropIfExists('matakuliah1s');
     }
-}
+};
