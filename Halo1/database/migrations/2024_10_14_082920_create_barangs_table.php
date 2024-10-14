@@ -4,32 +4,31 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateMatakuliahsTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('barangs', function (Blueprint $table) {
-            $table->integer('barang_id')->primary();
-            $table->integer('kategori_id');
-            $table->char('nama_barang',length:50);
-            $table->integer('daftar_akun');
-            $table->double('harga_beli');
-            $table->double('pajak_beli');
-            $table->double('harga_jual');
-            $table->double('pajak_jual');
-            $table->integer('stok');
+        Schema::create('matakuliahs', function (Blueprint $table) {
+            $table->id();
+            $table->char('kodeMatakuliah',8)->unique();
+            $table->text('namaMatakuliah');
+            $table->integer('sks');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('barangs');
+        Schema::dropIfExists('matakuliahs');
     }
-};
+}
